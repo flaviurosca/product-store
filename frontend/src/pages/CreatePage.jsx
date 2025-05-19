@@ -40,6 +40,12 @@ const CreatePage = () => {
         isClosable: true,
       });
     }
+
+    setNewProduct({
+      name: "",
+      price: "",
+      image: "",
+    });
   };
 
   return (
@@ -95,5 +101,3 @@ const CreatePage = () => {
 };
 
 export default CreatePage;
-
-// 1:33:14
