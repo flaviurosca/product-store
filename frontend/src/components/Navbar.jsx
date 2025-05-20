@@ -34,6 +34,7 @@ const Navbar = () => {
           <Link to="/create">
             <Button>
               <PlusSquareIcon fontSize={20} />
+              <Text ml={2}>Add product</Text>
             </Button>
           </Link>
           <Button onClick={toggleColorMode}>

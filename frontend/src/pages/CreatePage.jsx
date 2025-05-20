@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 import { useProductStore } from "../store/product.js";
 import { useToast } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const CreatePage = () => {
   const [newProduct, setNewProduct] = useState({
@@ -95,6 +96,12 @@ const CreatePage = () => {
             </Button>
           </VStack>
         </Box>
+
+        <Link to="/">
+          <Button variant="ghost" colorScheme="blue">
+            Back to Products
+          </Button>
+        </Link>
       </VStack>
     </Container>
   );
