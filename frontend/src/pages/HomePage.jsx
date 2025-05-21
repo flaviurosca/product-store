@@ -1,11 +1,18 @@
-import { Container, SimpleGrid, Text, VStack } from "@chakra-ui/react";
+import {
+  Center,
+  Container,
+  SimpleGrid,
+  Spinner,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useProductStore } from "../store/product";
 import ProductCard from "../components/ProductCard";
 
 const HomePage = () => {
-  const { getProducts, products } = useProductStore();
+  const { getProducts, products, loading } = useProductStore();
 
   useEffect(() => {
     getProducts();
@@ -28,19 +35,26 @@ const HomePage = () => {
           Current Products
         </Text>
 
-        <SimpleGrid
-          columns={{
-            base: 1,
-            md: 2,
-            lg: 3,
-          }}
-          spacing={10}
-          w="full"
-        >
-          {productsList}
-        </SimpleGrid>
-
-        {!products && (
+        {loading ? (
+          <VStack>
+            <Spinner size="xl" thickness="4px" color="blue.500" />
+            <Text fontSize={20} ml={4}>
+              Waking up the server...
+            </Text>
+          </VStack>
+        ) : products.length > 0 ? (
+          <SimpleGrid
+            columns={{
+              base: 1,
+              md: 2,
+              lg: 3,
+            }}
+            spacing={10}
+            w="full"
+          >
+            {productsList}
+          </SimpleGrid>
+        ) : (
           <Text
             fontSize="xl"
             textAlign="center"
