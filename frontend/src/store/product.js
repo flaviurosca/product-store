@@ -1,5 +1,7 @@
 import { create } from "zustand";
 
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export const useProductStore = create((set) => ({
   products: [],
   loading: false,
@@ -11,7 +13,7 @@ export const useProductStore = create((set) => ({
     }
 
     try {
-      const res = await fetch("/api/products", {
+      const res = await fetch(`${API_BASE}/api/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +38,7 @@ export const useProductStore = create((set) => ({
   getProducts: async () => {
     set({ loading: true });
     try {
-      const res = await fetch("/api/products");
+      const res = await fetch(`${API_BASE}/api/products`);
       const data = await res.json();
 
       if (!res.ok) {
@@ -53,7 +55,7 @@ export const useProductStore = create((set) => ({
 
   deleteProduct: async (id) => {
     try {
-      const res = await fetch(`/api/products/${id}`, {
+      const res = await fetch(`${API_BASE}/api/products/${id}`, {
         method: "DELETE",
       });
 
@@ -76,7 +78,7 @@ export const useProductStore = create((set) => ({
 
   updateProduct: async (id, updatedProduct) => {
     try {
-      const res = await fetch(`/api/products/${id}`, {
+      const res = await fetch(`${API_BASE}/api/products/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
