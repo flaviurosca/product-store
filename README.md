@@ -1,3 +1,5 @@
+[https://product-store.flaviurosca.com/](https://product-store.flaviurosca.com/)
+
 # Product Store
 
 This is a small, basic fullstack MERN application that allows users to add, edit, and delete products from a list. The backend is hosted on Render, and MongoDB Atlas is used as the cloud database provider.
